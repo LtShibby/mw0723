@@ -7,6 +7,9 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
+import com.cardinal.pos.data.entities.rentalAgreement.RentalAgreement;
+import com.cardinal.pos.service.RentalService;
+
 public class ToolRentalTests {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy");
