@@ -1,4 +1,4 @@
-package com.cardinal.pos.data.entities.holiday;
+package com.cardinal.pos.models;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.DayOfWeek;

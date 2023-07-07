@@ -1,4 +1,4 @@
-package com.cardinal.pos.data.entities.tool;
+package com.cardinal.pos.models;
 import java.math.BigDecimal;
 import java.math.MathContext;
 

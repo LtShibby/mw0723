@@ -1,9 +1,9 @@
-package com.cardinal.pos.data.repositories;
+package com.cardinal.pos.repositories;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.cardinal.pos.data.entities.tool.Tool;
+import com.cardinal.pos.models.Tool;
 
 public class ToolRepository {
 

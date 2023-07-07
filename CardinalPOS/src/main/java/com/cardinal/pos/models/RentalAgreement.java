@@ -1,12 +1,9 @@
-package com.cardinal.pos.data.entities.rentalAgreement;
+package com.cardinal.pos.models;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import com.cardinal.pos.data.entities.holiday.Holiday;
-import com.cardinal.pos.data.entities.tool.Tool;
 
 public class RentalAgreement {
 

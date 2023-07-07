@@ -1,9 +1,10 @@
-package com.cardinal.pos.service;
+package com.cardinal.pos.services;
 import java.time.LocalDate;
 
-import com.cardinal.pos.data.entities.rentalAgreement.RentalAgreement;
-import com.cardinal.pos.data.entities.tool.Tool;
-import com.cardinal.pos.data.repositories.ToolRepository;
+
+import com.cardinal.pos.models.RentalAgreement;
+import com.cardinal.pos.models.Tool;
+import com.cardinal.pos.repositories.ToolRepository;
 
 public class RentalService {
 
