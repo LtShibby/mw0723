@@ -1,6 +1,10 @@
 # mw0723
 code assessment for interview
 
+Created By: Matthew James Wozniak
+LinkedIn:   https://www.linkedin.com/in/matthew-wozniak/
+
+
 Tool Rental Application:
 ------------------------
 This is a simple Java application that simulates a tool rental system for a hardware store.
