@@ -52,4 +52,11 @@ public class Tool {
     public boolean isHolidayCharge() {
         return holidayCharge;
     }
+
+    @Override
+    public String toString() {
+        return "Tool [toolCode=" + toolCode + ", toolType=" + toolType + ", brand=" + brand + ", dailyCharge="
+                + dailyCharge + ", weekdayCharge=" + weekdayCharge + ", weekendCharge=" + weekendCharge
+                + ", holidayCharge=" + holidayCharge + ", mathContext=" + mathContext + "]";
+    }
 }

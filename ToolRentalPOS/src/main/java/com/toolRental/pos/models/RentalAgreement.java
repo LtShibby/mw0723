@@ -131,4 +131,14 @@ public class RentalAgreement {
     public BigDecimal getDailyRentalCharge() {
         return this.tool.getDailyCharge().round(mathContext);
     }
+
+    @Override
+    public String toString() {
+        return "RentalAgreement [tool=" + tool + ", rentalDays=" + rentalDays + ", checkoutDate=" + checkoutDate
+                + ", dueDate=" + dueDate + ", chargeDays=" + chargeDays + ", preDiscountCharge=" + preDiscountCharge
+                + ", discountPercent=" + discountPercent + ", discountAmount=" + discountAmount + ", finalCharge="
+                + finalCharge + ", mathContext=" + mathContext + "]";
+    }
+
+    
 }
