@@ -19,14 +19,16 @@ Tools available for rental include a ladder, chainsaw, and two types of jackhamm
 Building the Application:
 -------------------------
 The application uses Maven for dependency management. To build the project, navigate to the project directory in a terminal and execute:
-    mvn clean install
+    
+-- mvn clean install
 
 Running the Application:
 ------------------------
 Since this is mainly a backend application without a user interface, the primary way to interact with it is through the included JUnit tests.
 
 After building the application with Maven, the tests can be run with:
-    mvn test
+
+-- mvn test
 
 Running the Tests in VSCode:
 ----------------------------
