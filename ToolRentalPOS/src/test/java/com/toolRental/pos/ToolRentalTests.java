@@ -1,4 +1,4 @@
-package com.cardinal.pos;
+package com.toolRental.pos;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
@@ -8,8 +8,8 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
-import com.cardinal.pos.models.RentalAgreement;
-import com.cardinal.pos.services.RentalService;
+import com.toolRental.pos.models.RentalAgreement;
+import com.toolRental.pos.services.RentalService;
 
 public class ToolRentalTests {
 

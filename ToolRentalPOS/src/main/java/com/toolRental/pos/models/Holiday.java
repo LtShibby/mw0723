@@ -1,4 +1,4 @@
-package com.cardinal.pos.models;
+package com.toolRental.pos.models;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.DayOfWeek;

@@ -1,9 +1,9 @@
-package com.cardinal.pos.repositories;
+package com.toolRental.pos.repositories;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.cardinal.pos.models.Tool;
+import com.toolRental.pos.models.Tool;
 
 public class ToolRepository {
 
