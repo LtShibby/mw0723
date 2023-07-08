@@ -34,6 +34,14 @@ public class RentalAgreement {
         this.finalCharge = this.preDiscountCharge.subtract(this.discountAmount);
     }
 
+    /**
+     * Calculates the number of chargeable days for the rental based on the tool's charging rules and the rental duration.
+     *
+     * @param tool          the tool to be rented
+     * @param checkoutDate  the date of checkout
+     * @param rentalDays    the number of rental days
+     * @return the number of chargeable days
+     */
     private int calculateChargeDays(Tool tool, LocalDate checkoutDate, int rentalDays) {
         int chargeDays = 0;
         LocalDate dueDate = checkoutDate.plusDays(rentalDays);
@@ -46,6 +54,13 @@ public class RentalAgreement {
         return chargeDays;
     }
 
+    /**
+     * Checks if a specific date is a chargeable day based on the tool's charging rules.
+     *
+     * @param date  the date to check
+     * @param tool  the tool to be rented
+     * @return true if the date is a chargeable day, false otherwise
+     */
     private boolean isChargeableDay(LocalDate date, Tool tool) {
         if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
             return tool.isWeekendCharge();
@@ -54,6 +69,11 @@ public class RentalAgreement {
         }
     }
 
+    /**
+     * Generates a formatted string representation of the rental agreement.
+     *
+     * @return the formatted rental agreement string
+     */
     public String generateRentalAgreement() {
         StringBuilder sb = new StringBuilder();
         sb.append("======================");
@@ -88,6 +108,8 @@ public class RentalAgreement {
         sb.append("\n");
         return sb.toString();
     }
+
+    // Getters for the rental agreement attributes
 
     public Tool getTool() {
         return this.tool;
@@ -140,5 +162,4 @@ public class RentalAgreement {
                 + finalCharge + ", mathContext=" + mathContext + "]";
     }
 
-    
 }
