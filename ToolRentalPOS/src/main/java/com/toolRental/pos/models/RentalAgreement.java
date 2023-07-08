@@ -57,24 +57,39 @@ public class RentalAgreement {
         return chargeDays;
     }
 
-    public void printRentalAgreement() {
-        System.out.println();
-        System.out.println("======================");
-        System.out.println("Rental Agreement:");
-        System.out.println("Tool code: " + tool.getToolCode());
-        System.out.println("Tool type: " + tool.getToolType());
-        System.out.println("Tool brand: " + tool.getBrand());
-        System.out.println("Rental days: " + rentalDays);
-        System.out.println("Checkout date: " + checkoutDate.format(DateTimeFormatter.ofPattern("MM/dd/yy")));
-        System.out.println("Due date: " + dueDate.format(DateTimeFormatter.ofPattern("MM/dd/yy")));
-        System.out.println("Daily rental charge: " + tool.getDailyCharge());
-        System.out.println("Charge days: " + chargeDays);
-        System.out.println("Pre-discount charge: " + preDiscountCharge);
-        System.out.println("Discount percent: " + discountPercent + "%");
-        System.out.println("Discount amount: " + discountAmount);
-        System.out.println("Final charge: " + finalCharge);
-        System.out.println("======================");
-        System.out.println();
+    public String generateRentalAgreement() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("======================");
+        sb.append("\n");
+        sb.append("Rental Agreement:");
+        sb.append("\n");
+        sb.append("Tool code: ").append(tool.getToolCode());
+        sb.append("\n");
+        sb.append("Tool type: ").append(tool.getToolType());
+        sb.append("\n");
+        sb.append("Tool brand: ").append(tool.getBrand());
+        sb.append("\n");
+        sb.append("Rental days: ").append(rentalDays);
+        sb.append("\n");
+        sb.append("Checkout date: ").append(checkoutDate.format(DateTimeFormatter.ofPattern("MM/dd/yy")));
+        sb.append("\n");
+        sb.append("Due date: ").append(dueDate.format(DateTimeFormatter.ofPattern("MM/dd/yy")));
+        sb.append("\n");
+        sb.append("Daily rental charge: ").append(tool.getDailyCharge());
+        sb.append("\n");
+        sb.append("Charge days: ").append(chargeDays);
+        sb.append("\n");
+        sb.append("Pre-discount charge: ").append(preDiscountCharge);
+        sb.append("\n");
+        sb.append("Discount percent: ").append(discountPercent).append("%");
+        sb.append("\n");
+        sb.append("Discount amount: ").append(discountAmount);
+        sb.append("\n");
+        sb.append("Final charge: ").append(finalCharge);
+        sb.append("\n");
+        sb.append("======================");
+        sb.append("\n");
+        return sb.toString();
     }
 
 
