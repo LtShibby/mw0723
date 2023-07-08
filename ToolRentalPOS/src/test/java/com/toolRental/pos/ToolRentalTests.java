@@ -14,6 +14,9 @@ import org.junit.Test;
 import com.toolRental.pos.models.RentalAgreement;
 import com.toolRental.pos.services.RentalService;
 
+/**
+ * JUnit tests for the ToolRentalTests class.
+ */
 public class ToolRentalTests {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yy");
@@ -22,14 +25,27 @@ public class ToolRentalTests {
     private RentalService rentalService;
     private LocalDate currentDate;
 
+    /**
+     * Sets up the test environment before each test case.
+     */
     @Before
     public void setup() {
         rentalService = new RentalService();
         currentDate = LocalDate.now();
     }
 
+    /**
+     * Asserts that the rental agreement matches the expected values.
+     *
+     * @param agreement        the rental agreement to test
+     * @param chargeDays       the expected charge days
+     * @param dailyRentalCharge the expected daily rental charge
+     * @param preDiscountCharge the expected pre-discount charge
+     * @param discountAmount   the expected discount amount
+     * @param finalCharge      the expected final charge
+     */
     private void assertRentalAgreement(RentalAgreement agreement, int chargeDays, BigDecimal dailyRentalCharge,
-            BigDecimal preDiscountCharge, BigDecimal discountAmount, BigDecimal finalCharge) {
+                                      BigDecimal preDiscountCharge, BigDecimal discountAmount, BigDecimal finalCharge) {
         assertEquals("Incorrect charge days", chargeDays, agreement.getChargeDays());
         assertEquals("Incorrect daily rental charge", dailyRentalCharge.round(mathContext), agreement.getDailyRentalCharge());
         assertEquals("Incorrect pre-discount charge", preDiscountCharge.round(mathContext), agreement.getPreDiscountCharge());
@@ -37,6 +53,9 @@ public class ToolRentalTests {
         assertEquals("Incorrect final charge", finalCharge.round(mathContext), agreement.getFinalCharge());
     }
 
+    /**
+     * Tests that an IllegalArgumentException is thrown when checking out with invalid input.
+     */
     @Test
     public void testInvalidCheckout_ThrowsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -44,6 +63,9 @@ public class ToolRentalTests {
         });
     }
 
+    /**
+     * Tests the checkout of a ladder and verifies the rental agreement.
+     */
     @Test
     public void testCheckoutLadder_ReturnsValidRentalAgreement() {
         LocalDate checkoutDate = LocalDate.parse("7/2/20", formatter);
@@ -52,6 +74,9 @@ public class ToolRentalTests {
                 new BigDecimal("0.60"), new BigDecimal("5.37"));
     }
 
+    /**
+     * Tests the checkout of a chainsaw and verifies the rental agreement.
+     */
     @Test
     public void testCheckoutChainsaw_ReturnsValidRentalAgreement() {
         LocalDate checkoutDate = LocalDate.parse("7/2/15", formatter);
@@ -60,6 +85,9 @@ public class ToolRentalTests {
                 new BigDecimal("1.12"), new BigDecimal("3.35"));
     }
 
+    /**
+     * Tests the checkout of a DeWalt jackhammer and verifies the rental agreement.
+     */
     @Test
     public void testCheckoutJackhammerDeWalt_ReturnsValidRentalAgreement() {
         LocalDate checkoutDate = LocalDate.parse("9/3/15", formatter);
@@ -68,6 +96,9 @@ public class ToolRentalTests {
                 BigDecimal.ZERO, new BigDecimal("8.97"));
     }
 
+    /**
+     * Tests the checkout of a Ridgid jackhammer and verifies the rental agreement.
+     */
     @Test
     public void testCheckoutJackhammerRidgid_ReturnsValidRentalAgreement() {
         LocalDate checkoutDate = LocalDate.parse("9/3/15", formatter);
@@ -76,6 +107,9 @@ public class ToolRentalTests {
                 BigDecimal.ZERO, new BigDecimal("14.95"));
     }
 
+    /**
+     * Tests the checkout of a Ridgid jackhammer with a discount and verifies the rental agreement.
+     */
     @Test
     public void testCheckoutJackhammerRidgidWithDiscount_ReturnsValidRentalAgreement() {
         LocalDate checkoutDate = LocalDate.parse("7/2/20", formatter);
