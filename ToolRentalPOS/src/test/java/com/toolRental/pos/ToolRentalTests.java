@@ -19,13 +19,13 @@ public class ToolRentalTests {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy");
     MathContext mathContext = new MathContext(3);
 
-    private LocalDate currentDate;
     private RentalService rentalService;
+    private LocalDate currentDate;
 
     @Before
     public void setup() {
-        currentDate = LocalDate.parse("07/02/20", formatter);
         rentalService = new RentalService();
+        currentDate = LocalDate.parse("07/02/20", formatter);
     }
 
     private void assertRentalAgreement(RentalAgreement agreement, int chargeDays, BigDecimal dailyRentalCharge,
