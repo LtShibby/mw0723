@@ -12,12 +12,14 @@ import com.toolRental.pos.services.RentalService;
 public class Application {
 
     public static void main(String[] args) {
-        simulatePOS();
-        generateDailyReceipts();
+        
+        RentalService rentalService = new RentalService();
+        simulatePOS(rentalService);
+        generateDailyReceipts(rentalService);
     }
 
-    private static void generateDailyReceipts() {
-        List<String> dailyReceipts = RentalService.getDailyReceiptsList();
+    private static void generateDailyReceipts(RentalService rentalService) {
+        List<String> dailyReceipts = rentalService.getDailyReceiptsList();
 
         System.out.println("Printing Daily Receipts:"+"\n");
 
@@ -28,27 +30,27 @@ public class Application {
         }
     }
 
-    private static void simulatePOS() {
+    private static void simulatePOS(RentalService rentalService) {
         try {
-            RentalAgreement rentalAgreement = RentalService.checkout("JAKR", 5, 50, LocalDate.of(2023, 9, 3));
-            rentalAgreement = RentalService.checkout("LADW", 3, 10, LocalDate.of(2020, 07, 02));
-            rentalAgreement = RentalService.checkout("CHNS", 5, 25, LocalDate.of(2015, 07, 02));
-            rentalAgreement = RentalService.checkout("JAKD", 6, 0, LocalDate.of(2015, 9, 03));
-            rentalAgreement = RentalService.checkout("JAKR", 9, 0, LocalDate.of(2015, 07, 02));
-            rentalAgreement = RentalService.checkout("JAKR", 4, 50, LocalDate.of(2020, 07, 20));
+            RentalAgreement rentalAgreement = rentalService.checkout("JAKR", 5, 50, LocalDate.of(2023, 9, 3));
+            rentalAgreement = rentalService.checkout("LADW", 3, 10, LocalDate.of(2020, 07, 02));
+            rentalAgreement = rentalService.checkout("CHNS", 5, 25, LocalDate.of(2015, 07, 02));
+            rentalAgreement = rentalService.checkout("JAKD", 6, 0, LocalDate.of(2015, 9, 03));
+            rentalAgreement = rentalService.checkout("JAKR", 9, 0, LocalDate.of(2015, 07, 02));
+            rentalAgreement = rentalService.checkout("JAKR", 4, 50, LocalDate.of(2020, 07, 20));
 
             ToolRepository.addTool("SLDG",
                     new Tool("SLDG", "Sledgehammer", "Kraftool", new BigDecimal(8.49), true, true, true));
 
-            rentalAgreement = RentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
+            rentalAgreement = rentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
 
             ToolRepository.updateTool("SLDG",
                     new Tool("SLDG", "Sledgehammer", "SoupTool", new BigDecimal(18.49), false, true, false));
 
-            rentalAgreement = RentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
+            rentalAgreement = rentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
 
             ToolRepository.deleteTool("SLDG");
-            rentalAgreement = RentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
+            rentalAgreement = rentalService.checkout("SLDG", 10, 6, LocalDate.of(2020, 07, 20));
             rentalAgreement.generateRentalAgreement();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage() + "\n");

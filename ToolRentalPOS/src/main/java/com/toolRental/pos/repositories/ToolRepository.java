@@ -1,20 +1,23 @@
 package com.toolRental.pos.repositories;
+
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.toolRental.pos.models.Tool;
 
 public class ToolRepository {
-
-    private static Map<String, Tool> toolStore;
+    private static final Map<String, Tool> toolStore = new ConcurrentHashMap<>();
 
     static {
         initializeStore();
     }
 
+    private ToolRepository() {
+        // Private constructor to prevent instantiation
+    }
+
     private static void initializeStore() {
-        toolStore = new HashMap<>();
         toolStore.put("JAKR", new Tool("JAKR", "Jackhammer", "Ridgid", new BigDecimal("2.99"), true, false, false));
         toolStore.put("JAKD", new Tool("JAKD", "Jackhammer", "DeWalt", new BigDecimal("2.99"), true, false, false));
         toolStore.put("LADW", new Tool("LADW", "Ladder", "Werner", new BigDecimal("1.99"), true, true, false));
@@ -29,26 +32,14 @@ public class ToolRepository {
     }
 
     public static boolean addTool(String toolCode, Tool tool) {
-        if (toolStore.containsKey(toolCode)) {
-            return false;
-        }
-        toolStore.put(toolCode, tool);
-        return true;
+        return toolStore.putIfAbsent(toolCode, tool) == null;
     }
 
     public static boolean updateTool(String toolCode, Tool tool) {
-        if (!toolStore.containsKey(toolCode)) {
-            return false;
-        }
-        toolStore.put(toolCode, tool);
-        return true;
+        return toolStore.replace(toolCode, tool) != null;
     }
 
     public static boolean deleteTool(String toolCode) {
-        if (!toolStore.containsKey(toolCode)) {
-            return false;
-        }
-        toolStore.remove(toolCode);
-        return true;
+        return toolStore.remove(toolCode) != null;
     }
 }

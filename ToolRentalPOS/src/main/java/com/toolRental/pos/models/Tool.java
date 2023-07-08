@@ -1,4 +1,5 @@
 package com.toolRental.pos.models;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 
@@ -18,58 +19,37 @@ public class Tool {
         this.toolCode = toolCode;
         this.toolType = toolType;
         this.brand = brand;
-        this.dailyCharge = dailyCharge;
+        this.dailyCharge = dailyCharge.round(mathContext);
         this.weekdayCharge = weekdayCharge;
         this.weekendCharge = weekendCharge;
         this.holidayCharge = holidayCharge;
     }
 
-
     public String getToolCode() {
-        return this.toolCode;
+        return toolCode;
     }
-
 
     public String getToolType() {
-        return this.toolType;
+        return toolType;
     }
-
 
     public String getBrand() {
-        return this.brand;
+        return brand;
     }
-
 
     public BigDecimal getDailyCharge() {
-        return this.dailyCharge.round(mathContext);
+        return dailyCharge;
     }
-
 
     public boolean isWeekdayCharge() {
-        return this.weekdayCharge;
+        return weekdayCharge;
     }
-
-    public boolean getWeekdayCharge() {
-        return this.weekdayCharge;
-    }
-
 
     public boolean isWeekendCharge() {
-        return this.weekendCharge;
+        return weekendCharge;
     }
-
-    public boolean getWeekendCharge() {
-        return this.weekendCharge;
-    }
-
 
     public boolean isHolidayCharge() {
-        return this.holidayCharge;
+        return holidayCharge;
     }
-
-    public boolean getHolidayCharge() {
-        return this.holidayCharge;
-    }
-
-    
 }

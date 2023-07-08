@@ -1,4 +1,5 @@
 package com.toolRental.pos.services;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +9,13 @@ import com.toolRental.pos.models.Tool;
 import com.toolRental.pos.repositories.ToolRepository;
 
 public class RentalService {
+    private List<String> dailyReceiptTracker;
 
-    static List<String> dailyReceiptTracker = new ArrayList<>();
+    public RentalService() {
+        dailyReceiptTracker = new ArrayList<>();
+    }
 
-    public static RentalAgreement checkout(String toolCode, int rentalDayCount, int discountPercent, LocalDate checkoutDate) {
+    public RentalAgreement checkout(String toolCode, int rentalDayCount, int discountPercent, LocalDate checkoutDate) {
         if (rentalDayCount < 1) {
             throw new IllegalArgumentException("Rental day count must be 1 or greater.");
         }
@@ -22,15 +26,12 @@ public class RentalService {
         Tool tool = ToolRepository.getTool(toolCode);
 
         RentalAgreement rentalAgreement = new RentalAgreement(tool, rentalDayCount, checkoutDate, discountPercent);
-
         dailyReceiptTracker.add(rentalAgreement.generateRentalAgreement());
 
-        return new RentalAgreement(tool, rentalDayCount, checkoutDate, discountPercent);
+        return rentalAgreement;
     }
 
-    public static List<String> getDailyReceiptsList() {
+    public List<String> getDailyReceiptsList() {
         return dailyReceiptTracker;
     }
-
-
 }
