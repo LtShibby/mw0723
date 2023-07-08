@@ -2,6 +2,7 @@
 code assessment for interview
 
 Created By: Matthew James Wozniak
+
 LinkedIn:   https://www.linkedin.com/in/matthew-wozniak/
 
 
@@ -34,9 +35,15 @@ If you are using Visual Studio Code with the Java Extension Pack, you can run th
 Project Structure:
 ------------------
 CardinalPOS/
+
 |---src/
+
 |---|--- main/java/com/cardinal/pos/ - Contains the main application classes
+
 |---|----|--- models/                - Contains the Tool, RentalAgreement, and Holiday classes
+
 |---|----|--- repositories/          - Contains the ToolRepository class, which serves as a simulated database
+
 |---|----|--- services/              - Contains the RentalService class, which contains the business logic
+
 |---|--- test/java/com/cardinal/pos/ - Contains the JUnit tests for the application
