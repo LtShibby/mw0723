@@ -34,7 +34,7 @@ If you are using Visual Studio Code with the Java Extension Pack, you can run th
 
 Project Structure:
 ------------------
-CardinalPOS/
+ToolRentalPOS/
 
 |---src/
 
