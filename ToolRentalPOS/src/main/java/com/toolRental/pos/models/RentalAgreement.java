@@ -62,10 +62,16 @@ public class RentalAgreement {
      * @return true if the date is a chargeable day, false otherwise
      */
     private boolean isChargeableDay(LocalDate date, Tool tool) {
-        if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        boolean isWeekend = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY;
+        boolean isHoliday = Holiday.isHoliday(date);
+
+        if (isWeekend) {
             return tool.isWeekendCharge();
+        } else if (isHoliday) {
+            return tool.isHolidayCharge();
         } else {
-            return tool.isWeekdayCharge() && !Holiday.isHoliday(date);
+            return tool.isWeekdayCharge();
         }
     }
 
